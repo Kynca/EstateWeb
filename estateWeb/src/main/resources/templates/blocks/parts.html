@@ -1,0 +1,67 @@
+<div th:fragment="header">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/estates/(sort = ${sort})}">Catalog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/estates/flat/(sort = ${sort})}">Flats</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/estates/house/(sort = ${sort})}">Houses</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/estates/land/(sort = ${sort})}">Lands</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/estates/myEstates}">My estate</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Place an ad!)</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown03">
+                        <li><a class="dropdown-item" th:href="@{/estates/newFlat}">New flat</a></li>
+                        <li><a class="dropdown-item" th:href="@{/estates/new}">New estate</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div sec:authorize="isAuthenticated()">
+                <form th:method="POST" th:action="@{/logout}">
+                    <button type="submit" class="btn btn-secondary">Logout</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div th:fragment = "sidebar">
+    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+            id="menu">
+            <li class="nav-item">
+                <a th:href="@{'/estates/' + ${type}(sort = 'area')}" class="nav-link align-middle px-0">
+                    <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Sort by area</span>
+                </a>
+            </li>
+            <li>
+                <a th:href="@{'/estates/' + ${type}(sort= 'price')}" class="nav-link px-0 align-middle">
+                    <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Sort by price</span></a>
+            <li>
+                <a th:href="@{'/estates/' + ${type} (sort = 'default')}" class="nav-link px-0 align-middle">
+                    <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Sort by date</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                    <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Flats</span> </a>
+                <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                    <li class="w-100">
+                        <a th:href="@{/estates/flat/(sort = 'Flat.rooms')}" class="nav-link px-0"> <span class="d-none d-sm-inline">Sort by rooms</span></a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <hr>
+    </div>
+</div>

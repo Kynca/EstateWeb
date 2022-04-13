@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fd373228-0e3d-4883-a760-c68dd8daf6e9" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="27NmTcEryk38FuqraS3qHYXmx15" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="postgresql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="by.kynca.estateWeb.controller" />
+      <recent name="by.kynca.estateWeb.entity" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\estateWeb\estateWeb\src\main\resources\templates\estate" />
+      <recent name="D:\estateWeb\estateWeb\src\main\resources\templates\blocks" />
+      <recent name="D:\estateWeb\estateWeb\src\main\resources\db\migration" />
+      <recent name="D:\estateWeb\estateWeb\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.EstateWebApplication">
+    <configuration name="EstateWebApplicationTests.clientLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="estateWeb" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="by.kynca.estateWeb.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="by.kynca.estateWeb" />
+      <option name="MAIN_CLASS_NAME" value="by.kynca.estateWeb.EstateWebApplicationTests" />
+      <option name="METHOD_NAME" value="clientLogin" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EstateWebApplicationTests.clientSave" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="estateWeb" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="by.kynca.estateWeb.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="by.kynca.estateWeb" />
+      <option name="MAIN_CLASS_NAME" value="by.kynca.estateWeb.EstateWebApplicationTests" />
+      <option name="METHOD_NAME" value="clientSave" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EstateWebApplicationTests.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="estateWeb" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="by.kynca.estateWeb.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="by.kynca.estateWeb" />
+      <option name="MAIN_CLASS_NAME" value="by.kynca.estateWeb.EstateWebApplicationTests" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EstateWebApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="estateWeb" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="by.kynca.estateWeb.EstateWebApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.EstateWebApplicationTests.test" />
+        <item itemvalue="JUnit.EstateWebApplicationTests.clientLogin" />
+        <item itemvalue="JUnit.EstateWebApplicationTests.clientSave" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fd373228-0e3d-4883-a760-c68dd8daf6e9" name="Changes" comment="" />
+      <created>1649168927067</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1649168927067</updated>
+      <workItem from="1649168928881" duration="1148000" />
+      <workItem from="1649173252949" duration="2966000" />
+      <workItem from="1649194554134" duration="3307000" />
+      <workItem from="1649264214185" duration="525000" />
+      <workItem from="1649278975275" duration="4752000" />
+      <workItem from="1649339730133" duration="16067000" />
+      <workItem from="1649425237482" duration="601000" />
+      <workItem from="1649440954053" duration="11213000" />
+      <workItem from="1649501634309" duration="13571000" />
+      <workItem from="1649601934771" duration="17641000" />
+      <workItem from="1649678761315" duration="29789000" />
+      <workItem from="1649764302929" duration="27411000" />
+      <workItem from="1649807489172" duration="37052000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.net.UnknownHostException" package="java.net" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

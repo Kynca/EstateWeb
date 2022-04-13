@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div th:insert="blocks/parts :: header">
+</div>
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title" th:text="'Address:' + ${estate.address.country} + ' ' + ${estate.address.city} + ' '
+            + ${estate.address.street} + ' ' + ${estate.address.registryNumber}"></h3>
+            <div class="row">
+
+                <div class="white-box text-center">
+                    <img width="600" height="300" th:if="${estate.realEstateType.getValue() == 'FLAT'}" th:src="@{/static/flat.jpg}">
+                    <img width="600" height="300" th:if="${estate.realEstateType.getValue() == 'LAND'}" th:src="@{/static/land.jpg}">
+                    <img width="600" height="300" th:if="${estate.realEstateType.getValue() == 'HOUSE'}" th:src="@{/static/house.jpg}">
+                </div>
+
+                <h4 class="box-title mt-5">Information</h4>
+                <p th:text="${estate.addInfo}"></p>
+                <h2 class="mt-5" th:text="${estate.price} + '$'">
+                </h2>
+                <h3 class="box-title mt-5">Contacts</h3>
+                <p th:text="'mail:' + ${estate.client.email}"/>
+                <p th:text="'phone: +375' + ${estate.client.phoneNum}"/>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <h3 class="box-title mt-5">General Info</h3>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-product">
+                            <tbody>
+                            <tr>
+                                <td width="390">for rent</td>
+                                <td th:if="${estate.rented}" th:text="'-'"></td>
+                                <td th:if="${!estate.rented}" th:text="'+'"></td>
+                            </tr>
+                            <tr>
+                                <td>area</td>
+                                <td th:text="${estate.area}"></td>
+                            </tr>
+                            <div th:if="${estate.flat?.flatId != null}">
+                                <tr>
+                                    <td>rooms</td>
+                                    <td th:text="${estate.flat.rooms}"></td>
+                                </tr>
+                                <tr>
+                                    <td>floor</td>
+                                    <td th:text="${estate.flat.floor}"></td>
+                                </tr>
+                                <tr>
+                                    <td>Repaired</td>
+                                    <td th:if="${estate.flat.repaired}" th:text="'-'"></td>
+                                    <td th:if="${!estate.flat.repaired}" th:text="'+'"></td>
+                                </tr>
+                                <tr>
+                                    <td>number</td>
+                                    <td th:text="${estate.flat.number}"></td>
+                                </tr>
+                            </div>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
