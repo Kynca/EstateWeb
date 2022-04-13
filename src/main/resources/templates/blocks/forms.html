@@ -1,0 +1,88 @@
+<div th:fragment="client">
+    <div class="form-outline mb-4">
+        <input type="email" id="email" class="form-control" th:field="*{email}"/>
+        <label class="form-label" for="email">Email</label>
+        <div th:if="${#fields.hasErrors('email')}" class="alert alert-danger" th:errors="*{email}"/>
+        <div th:if="${mailError}" class="alert alert-danger" th:text="${mailError}"/>
+
+        <input type="password" id="password" class="form-control" th:field="*{password}"/>
+        <label class="form-label" for="password">Password</label>
+        <div th:if="${#fields.hasErrors('password')}" class="alert alert-danger" th:errors="*{password}"/>
+
+        <input type="number" id="phoneNum" class="form-control" th:field="*{phoneNum}"/>
+        <label class="form-label" for="phoneNum">Phone number</label>
+        <div th:if="${#fields.hasErrors('phoneNum')}" class="alert alert-danger" th:errors="*{phoneNum}"/>
+
+    </div>
+</div>
+
+<div th:fragment="flat">
+    <div class="form-outline mb-4">
+        <input type="number" id="flatNum" class="form-control" th:field="*{flat.number}"/>
+        <label class="form-label" for="flatNum">Flat number</label>
+        <div th:if="${#fields.hasErrors('flat.number')}" class="alert alert-danger" th:errors="*{flat.number}"/>
+
+        <input type="number" id="rooms" class="form-control" th:field="*{flat.rooms}"/>
+        <label class="form-label" for="rooms">Amount of rooms</label>
+        <div th:if="${#fields.hasErrors('flat.rooms')}" class="alert alert-danger" th:errors="*{flat.rooms}"/>
+
+        <input type="number" id="floor" class="form-control" th:field="*{flat.floor}"/>
+        <label class="form-label" for="floor">Floor</label>
+        <div th:if="${#fields.hasErrors('flat.floor')}" class="alert alert-danger" th:errors="*{flat.floor}"/>
+
+        <br>
+        <input class="form-radio-input me-2" type="radio" name="radio" value="true" id="isRepaired"
+               th:field="*{flat.repaired}"/>
+        <label class="form-radio-label" for="isRepaired"> Repaired </label>
+        <input class="form-radio-input me-2" type="radio" name="radio" value="false" id="isRepaired2"
+               th:field="*{flat.repaired}"/>
+        <label class="form-radio-label" for="isRepaired2"> Not repaired </label>
+    </div>
+</div>
+
+<div th:fragment="estate">
+    <div class="form-outline mb-4">
+        <input type="number" id="area" class="form-control" th:field="*{area}"/>
+        <label class="form-label" for="area">Area</label>
+        <div th:if="${#fields.hasErrors('area')}" class="alert alert-danger" th:errors="*{area}"/>
+    </div>
+
+    <div class="form-outline mb-4">
+        <input type="number" id="price" class="form-control" th:field="*{price}"/>
+        <label class="form-label" for="price">Price</label>
+        <div th:if="${#fields.hasErrors('price')}" class="alert alert-danger" th:errors="*{price}"/>
+    </div>
+
+    <div class="form-outline mb-4">
+        <textarea class="form-control" id="addInfo" rows="4" th:field="*{addInfo}"></textarea>
+        <label class="form-label" for="addInfo">Additional information</label>
+        <div th:if="${#fields.hasErrors('addInfo')}" class="alert alert-danger" th:errors="*{addInfo}"/>
+    </div>
+    <div class="form-check d-flex justify-content-center mb-4">
+        <input class="form-radio-input me-2" type="radio" name="radio" value="true" id="isRented1"
+               th:field="*{rented}"/>
+        <label class="form-radio-label" for="isRented1"> For rent </label>
+        <input class="form-radio-input me-2" type="radio" name="radio" value="false" id="isRented2"
+               th:field="*{rented}"/>
+        <label class="form-radio-label" for="isRented2"> Not for rent </label>
+    </div>
+
+    <div class="form-outline mb-4">
+        <input type="text" id="country" class="form-control" th:field="*{address.country}"/>
+        <label class="form-label" for="country">country</label>
+        <div th:if="${#fields.hasErrors('address.country')}" class="alert alert-danger" th:errors="*{address.country}"/>
+
+        <input type="text" id="city" class="form-control" th:field="*{address.city}"/>
+        <label class="form-label" for="city">city</label>
+        <div th:if="${#fields.hasErrors('address.city')}" class="alert alert-danger" th:errors="*{address.city}"/>
+
+        <input type="text" id="street" class="form-control" th:field="*{address.street}"/>
+        <label class="form-label" for="street">street</label>
+        <div th:if="${#fields.hasErrors('address.street')}" class="alert alert-danger" th:errors="*{address.street}"/>
+
+        <input type="number" id="registryNumber" class="form-control" th:field="*{address.registryNumber}"/>
+        <label class="form-label" for="registryNumber">registry number</label>
+        <div th:if="${#fields.hasErrors('address.registryNumber')}" class="alert alert-danger" th:errors="*{address.registryNumber}"/>
+    </div>
+</div>
+
