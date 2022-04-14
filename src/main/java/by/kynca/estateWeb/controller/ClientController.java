@@ -9,6 +9,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/")
@@ -38,10 +40,25 @@ public class ClientController {
         if (bindingResult.hasErrors()) {
             return "newClient";
         }
-        if (service.signUp(client) == null) {
+
+
+        if (service.save(client) == null) {
             model.addAttribute("mailError", "not unique mail");
             return "newClient";
         }
         return "redirect:/login";
+    }
+
+    @GetMapping("clients")
+    public String viewUsers(@RequestParam("page") Optional<Integer> page, Model model){
+       List<Client> clients = service.findAll(page.orElse(0), "clientId");
+       model.addAttribute("clients", clients);
+       return "viewClients";
+    }
+
+    @PutMapping("client/{id}")
+    public String setEnable(@PathVariable Long id){
+        service.setEnable(id);
+        return "redirect:/clients";
     }
 }

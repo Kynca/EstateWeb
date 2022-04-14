@@ -4,8 +4,10 @@ import by.kynca.estateWeb.entity.Client;
 import by.kynca.estateWeb.entity.Role;
 import by.kynca.estateWeb.repository.ClientRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,10 +18,12 @@ import java.util.List;
 
 
 @Service
-public class ClientService implements UserDetailsService, ServiceActions<Client>{
+public class ClientService implements UserDetailsService, ServiceActions<Client> {
+    @Value("${page.size.client}")
+    private int pageSize;
 
     private final ClientRepo clientRepo;
-    private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
+    private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
 
     @Autowired
     public ClientService(ClientRepo clientRepo) {
@@ -33,43 +37,37 @@ public class ClientService implements UserDetailsService, ServiceActions<Client>
 
     @Override
     public Client save(Client client) {
-       if(client.getClientId() != null && !clientRepo.existsById(client.getClientId()) ){
-           return null;
-       }
-      return clientRepo.save(client);
-    }
-
-    @Override
-    public List<Client> findAll(int page, String sort) {
-        Pageable pageable = Pageable.ofSize(page);
-        return clientRepo.findAllByRoleNot(Role.ADMIN, pageable).getContent();
-    }
-
-    public void disable(Long id) {
-       Client client = clientRepo.findById(id).orElse(null);
-       if(client != null && client.getRole() == Role.ADMIN){
-           client.setEnabled(false);
-       } else {
-           return;
-       }
-       clientRepo.save(client);
-    }
-
-    @Override
-    public Client findById(Long id) {
-        return clientRepo.findById(id).orElse(null);
-    }
-
-    public Client signUp(Client client){
         boolean exist = clientRepo.findClientByEmail(client.getEmail()).isPresent();
 
-        if(exist){
+        if (exist) {
             return null;
         }
 
         client.setRole(Role.USER);
         client.setPassword(encoder.encode(client.getPassword()));
-        return save(client);
+        client.setEnabled(true);
+        return clientRepo.save(client);
+    }
+
+    @Override
+    public List<Client> findAll(int page, String sort) {
+        Pageable pageable = PageRequest.of(page, pageSize, Sort.by(sort).descending());
+        return clientRepo.findAllByRoleNot(Role.ADMIN, pageable).getContent();
+    }
+
+    public void setEnable(Long id) {
+        Client client = clientRepo.findById(id).orElse(null);
+        if (client != null && client.getRole() != Role.ADMIN) {
+            client.setEnabled(!client.isEnabled());
+        } else {
+            return;
+        }
+        clientRepo.save(client);
+    }
+
+    @Override
+    public Client findById(Long id) {
+        return clientRepo.findById(id).orElse(null);
     }
 
 }

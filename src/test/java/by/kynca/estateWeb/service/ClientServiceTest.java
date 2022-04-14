@@ -38,7 +38,7 @@ class ClientServiceTest {
         client.setPassword("pass");
         client.setEmail("mail@mail.ru");
         when(clientRepo.save(client)).thenReturn(new Client(1L,"pass", Role.USER, "mail@ail.ru", 123456789L, true));
-        Assertions.assertNotNull(clientService.signUp(client));
+        Assertions.assertNotNull(clientService.save(client));
     }
 
     @Test

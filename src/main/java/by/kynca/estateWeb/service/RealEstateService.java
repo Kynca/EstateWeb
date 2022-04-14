@@ -5,6 +5,7 @@ import by.kynca.estateWeb.entity.RealEstate;
 import by.kynca.estateWeb.entity.RealEstateType;
 import by.kynca.estateWeb.repository.RealEstateRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -16,7 +17,8 @@ import java.util.List;
 @Service
 public class RealEstateService implements ServiceActions<RealEstate> {
 
-    private static final Integer PAGE_SIZE = 9;
+    @Value("${page.size.estate}")
+    private Integer pageSize;
 
     private final RealEstateRepo realEstateRepo;
 
@@ -35,7 +37,7 @@ public class RealEstateService implements ServiceActions<RealEstate> {
 
     @Override
     public List<RealEstate> findAll(int pageNum, String sort) {
-        Pageable page = PageRequest.of(pageNum, PAGE_SIZE, sortDefine(sort));
+        Pageable page = PageRequest.of(pageNum, pageSize, sortDefine(sort));
         return realEstateRepo.findAll(page).getContent();
     }
 
@@ -57,16 +59,16 @@ public class RealEstateService implements ServiceActions<RealEstate> {
             return null;
         }
 
-        Pageable page = PageRequest.of(pageNum, PAGE_SIZE, sortDefine(sort));
+        Pageable page = PageRequest.of(pageNum, pageSize, sortDefine(sort));
         return realEstateRepo.findRealEstatesByRealEstateType(estateType, page).getContent();
     }
 
     public long getAllPagesAmount() {
-        return (realEstateRepo.count() - 1) / 9;
+        return (realEstateRepo.count() - 1) / pageSize;
     }
 
     public long getByTypePagesAmount(RealEstateType type) {
-        return (realEstateRepo.countByRealEstateType(type) - 1) / 9;
+        return (realEstateRepo.countByRealEstateType(type) - 1) / pageSize;
     }
 
     public List<RealEstate> findClientEstates(Client client) {

@@ -18,7 +18,6 @@
 <div class="container">
     <form th:method="POST" th:action="@{/register}" th:object="${client}">
         <div th:insert="blocks/forms :: client"/>
-        <!-- Submit button -->
         <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
     </form>
 </div>

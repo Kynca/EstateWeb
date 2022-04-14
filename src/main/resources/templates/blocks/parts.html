@@ -17,6 +17,9 @@
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/estates/myEstates}">My estate</a>
                 </li>
+                <li class="nav-item" th:if="${#authentication.name == 'manticora_1@mail.ru'}">
+                    <a class="nav-link" th:href="@{/clients/}">Clients</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Place an ad!)</a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown03">

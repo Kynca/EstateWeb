@@ -1,9 +1,11 @@
 package by.kynca.estateWeb.security;
 
+import by.kynca.estateWeb.entity.Role;
 import by.kynca.estateWeb.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -33,6 +35,8 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/estates/", "/estates/house/", "/estates/flat/", "/estates/land/", "/estates/get/*", "/register","/static/**").permitAll()
+                .antMatchers(HttpMethod.GET,"/clients/").hasAuthority(Role.ADMIN.name())
+                .antMatchers(HttpMethod.PUT,"/client/**").hasAuthority(Role.ADMIN.name())
                 .anyRequest()
                 .authenticated()
                 .and()
