@@ -30,16 +30,18 @@ public class Client extends AbstractBean implements UserDetails {
     @Min(value = 100000000, message = "it is not a phone number")
     @Max(value = 1000000000L, message = "it is not a phone number")
     private long phoneNum;
+    private boolean enabled;
 
     public Client() {
     }
 
-    public Client(Long clientId, String password, Role role, String email, long phoneNum) {
+    public Client(Long clientId, String password, Role role, String email, long phoneNum, boolean enabled) {
         this.clientId = clientId;
         this.password = password;
         this.role = role;
         this.email = email;
         this.phoneNum = phoneNum;
+        this.enabled = enabled;
     }
 
     public Client(String password, Role role, String email, long phoneNum) {
@@ -47,6 +49,7 @@ public class Client extends AbstractBean implements UserDetails {
         this.role = role;
         this.email = email;
         this.phoneNum = phoneNum;
+        this.enabled = true;
     }
 
     public Long getClientId() {
@@ -89,7 +92,7 @@ public class Client extends AbstractBean implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return enabled;
     }
 
     public void setPassword(String password) {
@@ -118,6 +121,10 @@ public class Client extends AbstractBean implements UserDetails {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public void setEnabled(boolean enabled){
+        this.enabled = enabled;
     }
 
     @Override

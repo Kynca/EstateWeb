@@ -12,6 +12,5 @@ public interface RealEstateRepo extends JpaRepository<RealEstate, Long> {
     Page<RealEstate> findRealEstatesByRealEstateType(RealEstateType realEstateType, Pageable pageable);
 
     long countByRealEstateType(RealEstateType realEstateType);
-
     List<RealEstate> findRealEstatesByClientClientId(Long clientId);
 }

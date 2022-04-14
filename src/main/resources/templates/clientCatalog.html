@@ -14,13 +14,12 @@
 <body>
 <div th:insert="blocks/parts :: header">
 </div>
-
 <div class="container-fluid">
     <div class="col py-3">
         <div class="album py-5 bg-light">
-            <div class="row">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <h2 th:if="${estates.isEmpty()}" th:text="'You have no estates placed yet :/'">
+            <h2 th:if="${estates.isEmpty()}" th:text="'You have no estates placed yet :/'"/>
+                <div class="row">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                         <div class="col" th:each="estate : ${estates}">
                             <div class="card shadow-sm">
                                 <img width="100%" height="225" th:if="${estate.realEstateType.getValue() == 'FLAT'}"
@@ -49,11 +48,10 @@
                                 </div>
                             </div>
                         </div>
-                </h2>
-            </div>
+                    </div>
+                </div>
         </div>
     </div>
-</div>
 </div>
 </body>
 </html>

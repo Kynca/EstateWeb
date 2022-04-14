@@ -27,7 +27,7 @@ public class RealEstateService implements ServiceActions<RealEstate> {
 
     @Transactional
     public RealEstate save(RealEstate realEstate) {
-        if (realEstate.getRealEstateId() != null && realEstateRepo.findById(realEstate.getRealEstateId()).orElse(null) == null) {
+        if (realEstate.getRealEstateId() != null && !realEstateRepo.existsById(realEstate.getRealEstateId())) {
             return null;
         }
         return realEstateRepo.save(realEstate);
@@ -39,7 +39,6 @@ public class RealEstateService implements ServiceActions<RealEstate> {
         return realEstateRepo.findAll(page).getContent();
     }
 
-    @Override
     public void delete(Long id) {
         if (realEstateRepo.existsById(id)) {
             realEstateRepo.deleteById(id);

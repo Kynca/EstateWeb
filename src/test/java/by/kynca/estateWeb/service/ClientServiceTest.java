@@ -33,12 +33,12 @@ class ClientServiceTest {
     private BCryptPasswordEncoder encoder;
 
     @Test
-    public void save() {
+    public void signUp() {
         Client client = new Client();
         client.setPassword("pass");
         client.setEmail("mail@mail.ru");
-        when(clientRepo.save(client)).thenReturn(new Client(1L,"pass", Role.USER, "mail@ail.ru", 123456789L));
-        Assertions.assertNotNull(clientService.save(client));
+        when(clientRepo.save(client)).thenReturn(new Client(1L,"pass", Role.USER, "mail@ail.ru", 123456789L, true));
+        Assertions.assertNotNull(clientService.signUp(client));
     }
 
     @Test

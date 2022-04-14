@@ -20,6 +20,7 @@ create table client
     email     varchar(255),
     password  varchar(255),
     phone_num int8        not null,
+    enabled   boolean     not null,
     role      varchar(10) not null,
     primary key (client_id)
 );

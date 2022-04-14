@@ -38,7 +38,7 @@ public class ClientController {
         if (bindingResult.hasErrors()) {
             return "newClient";
         }
-        if (service.save(client) == null) {
+        if (service.signUp(client) == null) {
             model.addAttribute("mailError", "not unique mail");
             return "newClient";
         }

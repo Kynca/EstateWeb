@@ -1,10 +1,10 @@
-INSERT INTO client (client_id, password, email, phone_num, role)
+INSERT INTO client (client_id, password, email, phone_num, role, enabled)
 VALUES (1, '$2a$12$GHtApwKvFA31IK8E7OdwF../f31W/S4O3jm2yP.mA1hwzbHmZ6XlC', 'manticora_1@mail.ru', 292330738,
-        'ADMIN'),
-       (2, '$2a$12$GHtApwKvFA31IK8E7OdwF../f31W/S4O3jm2yP.mA1hwzbHmZ6XlC', 'dima@mail.ru', 292222143, 'USER'),
-       (3, '$2a$12$GHtApwKvFA31IK8E7OdwF../f31W/S4O3jm2yP.mA1hwzbHmZ6XlC', 'valic@mail.ru', 292222113, 'USER'),
-       (4, '$2a$12$GHtApwKvFA31IK8E7OdwF../f31W/S4O3jm2yP.mA1hwzbHmZ6XlC', 'brovalok@mail.ru', 293222143, 'USER'),
-       (5,'$2a$12$GHtApwKvFA31IK8E7OdwF../f31W/S4O3jm2yP.mA1hwzbHmZ6XlC', 'rofloakk@mail.ru', 445668915, 'USER');
+        'ADMIN', true),
+       (2, '$2a$12$GHtApwKvFA31IK8E7OdwF../f31W/S4O3jm2yP.mA1hwzbHmZ6XlC', 'dima@mail.ru', 292222143, 'USER', true),
+       (3, '$2a$12$GHtApwKvFA31IK8E7OdwF../f31W/S4O3jm2yP.mA1hwzbHmZ6XlC', 'valic@mail.ru', 292222113, 'USER', true),
+       (4, '$2a$12$GHtApwKvFA31IK8E7OdwF../f31W/S4O3jm2yP.mA1hwzbHmZ6XlC', 'brovalok@mail.ru', 293222143, 'USER', true),
+       (5,'$2a$12$GHtApwKvFA31IK8E7OdwF../f31W/S4O3jm2yP.mA1hwzbHmZ6XlC', 'rofloakk@mail.ru', 445668915, 'USER', true);
 
 
 INSERT INTO address (address_id, city, country, registry_number, street)
