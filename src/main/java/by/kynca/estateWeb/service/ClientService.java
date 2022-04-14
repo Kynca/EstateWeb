@@ -36,6 +36,7 @@ public class ClientService implements UserDetailsService, ServiceActions<Client>
         if(exist){
             return null;
         }
+
         client.setRole(Role.USER);
         client.setPassword(encoder.encode(client.getPassword()));
         return save(client);
@@ -47,7 +48,7 @@ public class ClientService implements UserDetailsService, ServiceActions<Client>
     }
 
     @Override
-    public void deleteById(Long id) {
+    public void delete(Long id) {
         throw new UnsupportedOperationException();
     }
 

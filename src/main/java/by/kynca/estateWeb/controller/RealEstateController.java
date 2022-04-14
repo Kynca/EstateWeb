@@ -13,7 +13,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.Optional;
 
 @Controller
@@ -125,7 +124,7 @@ public class RealEstateController {
 
     @DeleteMapping("/{id}")
     public String delete(@PathVariable Long id) {
-        estateService.deleteById(id);
+        estateService.delete(id);
         return "redirect:/estates/";
     }
 

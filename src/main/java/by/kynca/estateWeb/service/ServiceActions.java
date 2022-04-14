@@ -8,6 +8,6 @@ public interface ServiceActions<T extends AbstractBean> {
     T save(T entity);
 
     List<T> findAll(int page, String sort);
-    void deleteById(Long id);
+    void delete(Long id);
     T findById(Long id);
 }

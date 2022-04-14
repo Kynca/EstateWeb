@@ -40,7 +40,7 @@ public class RealEstateService implements ServiceActions<RealEstate> {
     }
 
     @Override
-    public void deleteById(Long id) {
+    public void delete(Long id) {
         if (realEstateRepo.existsById(id)) {
             realEstateRepo.deleteById(id);
         }
