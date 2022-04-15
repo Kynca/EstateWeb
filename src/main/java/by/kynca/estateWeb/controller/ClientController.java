@@ -23,6 +23,11 @@ public class ClientController {
         this.service = service;
     }
 
+    @GetMapping("")
+    public String homepage(){
+        return "redirect:/estates/";
+    }
+
     @GetMapping("login")
     public String login() {
         return "loginForm";
