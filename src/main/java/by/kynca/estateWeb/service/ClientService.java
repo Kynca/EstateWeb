@@ -13,10 +13,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-
+/**
+ * Service which work with client
+ */
 @Service
 public class ClientService implements UserDetailsService, ServiceActions<Client> {
     @Value("${page.size.client}")
@@ -31,10 +34,16 @@ public class ClientService implements UserDetailsService, ServiceActions<Client>
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return clientRepo.findClientByEmail(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+    public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
+        return clientRepo.findClientByEmail(mail).orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 
+    /**
+     * save client in db
+     * @param client client to save
+     * @return saved client
+     */
+    @Transactional
     @Override
     public Client save(Client client) {
         boolean exist = clientRepo.findClientByEmail(client.getEmail()).isPresent();
@@ -49,12 +58,22 @@ public class ClientService implements UserDetailsService, ServiceActions<Client>
         return clientRepo.save(client);
     }
 
+    /**
+     * find all client in db where client role not null
+     * @param page number of paeg
+     * @param sort type of sort
+     * @return List of client
+     */
     @Override
     public List<Client> findAll(int page, String sort) {
         Pageable pageable = PageRequest.of(page, pageSize, Sort.by(sort).descending());
         return clientRepo.findAllByRoleNot(Role.ADMIN, pageable).getContent();
     }
 
+    /**
+     * method for enable/disable client
+     * @param id id of edited client
+     */
     public void setEnable(Long id) {
         Client client = clientRepo.findById(id).orElse(null);
         if (client != null && client.getRole() != Role.ADMIN) {
@@ -65,6 +84,11 @@ public class ClientService implements UserDetailsService, ServiceActions<Client>
         clientRepo.save(client);
     }
 
+    /**
+     * fond client by id
+     * @param id of searching client
+     * @return null if client doesn't exist, client from db it it is
+     */
     @Override
     public Client findById(Long id) {
         return clientRepo.findById(id).orElse(null);

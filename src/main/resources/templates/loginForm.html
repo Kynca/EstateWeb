@@ -18,9 +18,10 @@
         <p>
             <label for="password" class="sr-only">Password</label>
             <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
+        <div class="alert alert-danger" th:if="${param.error!= null}" th:text="'client with this mail and password can not be found'"/>
         </p>
-        <input name="_csrf" type="hidden" value="bb0e77c6-bb3d-427d-aa89-18abdd79791b">
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+<!--        <input name="_csrf" type="hidden" value="bb0e77c6-bb3d-427d-aa89-18abdd79791b">-->
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
     </form>
 
     <form class="form-signin" th:method="GET" th:action="@{/register}">

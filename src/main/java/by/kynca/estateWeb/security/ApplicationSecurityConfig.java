@@ -65,13 +65,4 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
         provider.setUserDetailsService(clientService);
         return provider;
     }
-//    @Override
-//    @Bean
-//    protected UserDetailsService userDetailsService() {
-//        UserDetails userDetails = User.builder()
-//                .username()
-//                .password(passwordEncoder.encode())
-//                .authorities()
-//                .build();
-//    }
 }

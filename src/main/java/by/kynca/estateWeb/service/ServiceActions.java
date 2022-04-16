@@ -4,6 +4,9 @@ import by.kynca.estateWeb.entity.AbstractBean;
 
 import java.util.List;
 
+/**
+ * Interface for common operations with classes which extends AbstractBean
+ */
 public interface ServiceActions<T extends AbstractBean> {
     T save(T entity);
 

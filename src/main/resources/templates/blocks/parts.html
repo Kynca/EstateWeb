@@ -17,9 +17,11 @@
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/estates/myEstates}">My estate</a>
                 </li>
-                <li class="nav-item" th:if="${#authentication.name == 'manticora_1@mail.ru'}">
+                <div sec:authorize="isAuthenticated()">
+                <li class="nav-item" th:if="${#authentication.principal.role.name == 'ADMIN'}">
                     <a class="nav-link" th:href="@{/clients/}">Clients</a>
                 </li>
+                </div>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Place an ad!)</a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown03">
@@ -31,6 +33,11 @@
             <div sec:authorize="isAuthenticated()">
                 <form th:method="POST" th:action="@{/logout}">
                     <button type="submit" class="btn btn-secondary">Logout</button>
+                </form>
+            </div>
+            <div sec:authorize="!isAuthenticated()">
+                <form th:method="GET" th:action="@{/login}">
+                    <button type="submit" class="btn btn-secondary">Login</button>
                 </form>
             </div>
         </div>
