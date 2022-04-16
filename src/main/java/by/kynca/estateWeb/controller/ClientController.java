@@ -3,6 +3,7 @@ package by.kynca.estateWeb.controller;
 import by.kynca.estateWeb.entity.Client;
 import by.kynca.estateWeb.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -39,8 +40,8 @@ public class ClientController {
      * @return login page
      */
     @GetMapping("login")
-    public String loginForm() {
-        return "loginForm";
+    public String loginForm(@AuthenticationPrincipal Client client) {
+       return client == null ? "loginForm" : "redirect:/estates/";
     }
 
 

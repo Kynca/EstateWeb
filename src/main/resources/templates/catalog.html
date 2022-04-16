@@ -28,9 +28,9 @@
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                         <div class="col" th:each="estate : ${estates}">
                             <div class="card shadow-sm">
-                                        <img width="100%" height="225" th:if="${estate.realEstateType.getValue() == 'FLAT'}" th:src="@{/static/flat.jpg}">
-                                        <img width="100%" height="225" th:if="${estate.realEstateType.getValue() == 'LAND'}" th:src="@{/static/land.jpg}">
-                                        <img width="100%" height="225" th:if="${estate.realEstateType.getValue() == 'HOUSE'}" th:src="@{/static/house.jpg}">
+                                <img width="100%" height="225" th:if="${estate.realEstateType.getValue() == 'FLAT'}" th:src="@{/static/flat.jpg}">
+                                <img width="100%" height="225" th:if="${estate.realEstateType.getValue() == 'LAND'}" th:src="@{/static/land.jpg}">
+                                <img width="100%" height="225" th:if="${estate.realEstateType.getValue() == 'HOUSE'}" th:src="@{/static/house.jpg}">
                                 <div class="card-body">
                                     <p class="card-text" th:text="${estate.addInfo}"/>
                                     <div class="d-flex justify-content-between align-items-center">
@@ -38,6 +38,18 @@
                                             <button type="submit" class="btn btn-sm btn-outline-secondary"
                                                     th:text="View"/>
                                         </form>
+                                        <th:block sec:authorize="isAuthenticated()">
+                                            <th:block th:if="${#authentication.principal.role.name == 'ADMIN'}">
+                                        <form th:method="GET" th:action="@{'/estates/edit/' + ${estate.realEstateId}}">
+                                            <button type="submit" class="btn btn-sm btn-outline-secondary"
+                                                    th:text="Edit"/>
+                                        </form>
+                                        <form th:method="DELETE" th:action="@{'/estates/' + ${estate.realEstateId}}">
+                                            <button type="submit" class="btn btn-sm btn-outline-secondary"
+                                                    th:text="Delete"/>
+                                        </form>
+                                            </th>
+                                    </th:block>
                                         <small class="text-muted" th:text="${estate.price}" ></small>
                                     </div>
                                 </div>
