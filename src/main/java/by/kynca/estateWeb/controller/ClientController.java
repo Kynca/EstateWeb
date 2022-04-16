@@ -37,7 +37,7 @@ public class ClientController {
     }
 
     /**
-     * @return login page
+     * @return login page if client not authorized
      */
     @GetMapping("login")
     public String loginForm(@AuthenticationPrincipal Client client) {
