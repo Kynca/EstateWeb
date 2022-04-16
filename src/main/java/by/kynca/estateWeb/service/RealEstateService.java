@@ -97,15 +97,15 @@ public class RealEstateService implements ServiceActions<RealEstate> {
     /**
      * @return amount of estate pages
      */
-    public long getAllPagesAmount() {
-        return (realEstateRepo.count() - 1) / pageSize;
+    public int getAllPagesAmount() {
+        return (int) (realEstateRepo.count() - 1) / pageSize;
     }
 
     /**
      * @param type type of estate
      * @return amount of certain estates pages
      */
-    public long getByTypePagesAmount(RealEstateType type) {
+    public int getByTypePagesAmount(RealEstateType type) {
         return (realEstateRepo.countByRealEstateType(type) - 1) / pageSize;
     }
 

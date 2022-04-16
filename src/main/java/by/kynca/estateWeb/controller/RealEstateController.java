@@ -38,9 +38,15 @@ public class RealEstateController {
      */
     @GetMapping("/")
     public String catalog(@RequestParam("page") Optional<Integer> page, @RequestParam("sort") Optional<String> sort, Model model) {
+        int currentPage = page.orElse(0);
+        int lastPage = estateService.getAllPagesAmount();
 
-        List<RealEstate> catalog = estateService.findAll(page.orElse(0), sort.orElse("realEstateId"));
-        setPaginatedCatalog(model, page.orElse(0), sort.orElse("realEstateId"), "", catalog, estateService.getAllPagesAmount());
+        if (currentPage > lastPage ){
+            currentPage = 0;
+        }
+
+        List<RealEstate> catalog = estateService.findAll(currentPage, sort.orElse("realEstateId"));
+        setPaginatedCatalog(model, currentPage, sort.orElse("realEstateId"), "", catalog, lastPage);
         return "catalog";
     }
 
@@ -55,7 +61,15 @@ public class RealEstateController {
     @GetMapping("/{estateType}")
     public String specificCatalog(@RequestParam("page") Optional<Integer> page, @RequestParam("sort") Optional<String> sort,
                                   @PathVariable String estateType, Model model) {
-        List<RealEstate> catalog = estateService.findAllByType(estateType, page.orElse(0), sort.orElse("realEstateId"));
+
+        int currentPage = page.orElse(0);
+        int lastPage = estateService.getAllPagesAmount();
+
+        if (currentPage > lastPage ){
+            currentPage = 0;
+        }
+
+        List<RealEstate> catalog = estateService.findAllByType(estateType, currentPage, sort.orElse("realEstateId"));
 
         RealEstateType type = catalog.get(0).getRealEstateType();
         setPaginatedCatalog(model, page.orElse(0), sort.orElse("realEstateId"),
@@ -247,7 +261,7 @@ public class RealEstateController {
      * @param catalog list of estates
      * @param lastPage last page of pagination
      */
-    private void setPaginatedCatalog(Model model, int page, String sort, String type, List<RealEstate> catalog, long lastPage) {
+    private void setPaginatedCatalog(Model model, long page, String sort, String type, List<RealEstate> catalog, long lastPage) {
         model.addAttribute("estates", catalog);
         model.addAttribute("page", page);
         model.addAttribute("lastPage", lastPage);

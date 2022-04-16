@@ -84,8 +84,18 @@ public class ClientController {
      */
     @GetMapping("clients")
     public String viewUsers(@RequestParam("page") Optional<Integer> page, Model model){
-       List<Client> clients = service.findAll(page.orElse(0), "clientId");
+
+        int currentPage = page.orElse(0);
+        int lastPage = service.pagesAmount();
+
+        if (currentPage > lastPage ){
+            currentPage = 0;
+        }
+
+       List<Client> clients = service.findAll(currentPage, "clientId");
        model.addAttribute("clients", clients);
+       model.addAttribute("lastPage", service.pagesAmount());
+       model.addAttribute("page", currentPage);
        return "viewClients";
     }
 

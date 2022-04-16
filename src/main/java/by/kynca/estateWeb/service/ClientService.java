@@ -94,4 +94,8 @@ public class ClientService implements UserDetailsService, ServiceActions<Client>
         return clientRepo.findById(id).orElse(null);
     }
 
+    public int pagesAmount(){
+      return  (clientRepo.countClientByRole(Role.USER) - 1) / pageSize;
+    }
+
 }

@@ -69,7 +69,7 @@ class RealEstateServiceTest {
 
     @Test
     void getByTypePagesAmount() {
-        when(repo.countByRealEstateType(RealEstateType.FLAT)).thenReturn(12L);
+        when(repo.countByRealEstateType(RealEstateType.FLAT)).thenReturn(12);
         Assertions.assertEquals(1, estateService.getByTypePagesAmount(RealEstateType.FLAT));
     }
 }

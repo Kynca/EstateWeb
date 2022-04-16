@@ -13,4 +13,5 @@ import java.util.Optional;
 public interface ClientRepo extends JpaRepository<Client, Long> {
     Optional<Client> findClientByEmail(String email);
     Page<Client> findAllByRoleNot(Role role, Pageable page);
+    int countClientByRole(Role role);
 }
